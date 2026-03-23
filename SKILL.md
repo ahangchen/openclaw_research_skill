@@ -6,14 +6,14 @@
 
 **核心特点**:
 - ✅ 每天精读5篇论文（质量 > 数量）
-- ✅ 使用NotebookLM询问3个核心问题
+- ✅ 使用GLM WebReader回答3个核心问题
 - ✅ 生成详细的论文分析文档（至少500行）
 - ✅ 每日思考文档（延续性研究）
 - ✅ 强制质量验证（11项检查）
 - ✅ 自动Git提交和推送
 
-**版本**: v7.0（模块化重构）
-**最后更新**: 2026-03-22
+**版本**: v7.1（GLM WebReader正式版）
+**最后更新**: 2026-03-23
 **Git仓库**: git@github.com:ahangchen/openclaw_research_skill.git
 
 ---
@@ -25,10 +25,9 @@
 ║  ⚠️ 执行前必须满足以下条件                                 ║
 ╚════════════════════════════════════════════════════════════╝
 
-1. ✅ 代理已启动 (socks5://127.0.0.1:1080)
-2. ✅ GitHub仓库已关联（main分支）
-3. ✅ NotebookLM CLI可用
-4. ✅ 目录已创建
+1. ✅ GitHub仓库已关联（main分支）
+2. ✅ GLM-5可用（用于论文分析）
+3. ✅ 目录已创建
 ```
 
 ---
@@ -132,10 +131,9 @@ spatial-agi-research/
 ### 论文文档
 
 - ✅ 至少500行
-- ✅ 包含完整的NotebookLM问答记录
+- ✅ 包含完整的3个核心问题分析
 - ✅ 包含与Spatial AGI的关系分析
 - ✅ 包含个人思考和见解
-- ✅ 包含NotebookLM笔记本ID
 
 ### 每日思考
 
@@ -205,11 +203,10 @@ spatial-agi-research/
 
 - **GitHub仓库**: https://github.com/ahangchen/openclaw_research_skill
 - **博客仓库**: https://github.com/ahangchen/spatial_agi
-- **NotebookLM**: https://notebooklm.google.com
 
 ---
 
 **关键词**: `#spatial-agi` `#research-skill` `#modular` `#subagent` `#quality-validation`
 
 **维护者**: OpenClaw AI
-**版本历史**: v6.9 → v7.0（模块化重构）
+**版本历史**: v6.9 → v7.0（模块化重构）→ v7.1（GLM WebReader正式版）
