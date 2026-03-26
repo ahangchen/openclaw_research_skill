@@ -4,6 +4,43 @@
 
 将今天的研究成果（论文文档、思考文档、论文列表）提交并推送到GitHub。
 
+## 🚨 执行方式
+
+```
+╔════════════════════════════════════════════════════════════╗
+║  ⚠️ 必须使用Subagent执行此Step                             ║
+║                                                              ║
+║  ❌ 错误：在主Session中直接执行git命令                      ║
+║  ✅ 正确：启动Subagent执行完整的git流程                     ║
+║                                                              ║
+║  原因：                                                      ║
+║  1. 避免主Session token限制                                ║
+║  2. 确保push完整执行（不会被中断）                         ║
+║  3. 独立session便于调试                                    ║
+║  4. 可以完整记录git操作日志                                ║
+╚════════════════════════════════════════════════════════════╝
+```
+
+## 调用方式
+
+```bash
+# 主Session应该这样调用：
+sessions_spawn \
+  --runtime subagent \
+  --task "执行Step 7: Git推送
+
+请阅读 ~/.openclaw/workspace/skills/spatial-agi-research/steps/step-7-git-push.md
+并执行所有步骤，包括：
+1. 检查git状态
+2. 添加所有变更
+3. 创建commit
+4. 推送到GitHub
+5. 验证push成功（git status必须显示'up to date'）
+6. 返回commit ID和push状态
+
+⚠️ 必须确保push成功，不能只commit不push！"
+```
+
 ## 🚨 核心原则
 
 ```

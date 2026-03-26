@@ -176,7 +176,7 @@ echo ""
 
 # 检查11: Mermaid图表总数
 echo "📋 检查11: Mermaid图表数量"
-MERMAID_COUNT=$(grep -c "```mermaid" "$THINKING_FILE")
+MERMAID_COUNT=$(grep -c '```mermaid' "$THINKING_FILE")
 if [ $MERMAID_COUNT -lt 3 ]; then
     echo "   ❌ 错误：Mermaid图表不足（$MERMAID_COUNT < 3）"
     echo "   📊 要求: 至少3个图表"
