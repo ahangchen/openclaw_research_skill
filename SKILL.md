@@ -42,11 +42,13 @@
 ║                                                              ║
 ║  ✅ 主Session只负责调度（串行发起subagent）                ║
 ║  ✅ 每个Step独立subagent（互不干扰）                       ║
+║  ✅ 不同Step之间严格串行：等Step N完成后再启动Step N+1     ║
+║  ✅ Step 3的5篇论文也严格串行：等论文N完成后再启动论文N+1  ║
 ║  ✅ 避免token限制和上下文污染                              ║
-║  ✅ 确保每个Step完整执行                                   ║
 ║                                                              ║
 ║  ❌ 禁止在主Session中直接执行任务                          ║
 ║  ❌ 禁止跳过任何Step                                       ║
+║  ❌ 禁止同时启动多个Subagent                               ║
 ╚════════════════════════════════════════════════════════════╝
 ```
 
@@ -56,20 +58,24 @@
 主Session (Cron/Main)
     │
     ├─→ Subagent[Step 0]: 完成度检查
-    │       └─→ 返回结果 → 主Session记录
+    │       └─→ 返回结果 → 主Session记录 → 启动Step 1
     │
     ├─→ Subagent[Step 1]: 搜索论文
-    │       └─→ 返回论文列表 → 主Session记录
+    │       └─→ 返回论文列表 → 主Session记录 → 启动Step 2
     │
     ├─→ Subagent[Step 2]: 筛选论文
-    │       └─→ 返回5篇精选 → 主Session记录
+    │       └─→ 返回5篇精选 → 主Session记录 → 启动Step 3.1
     │
     ├─→ Subagent[Step 3.1]: 精读论文1
-    ├─→ Subagent[Step 3.2]: 精读论文2  ← 可串行
+    │       └─→ 完成后 → 启动Step 3.2
+    ├─→ Subagent[Step 3.2]: 精读论文2
+    │       └─→ 完成后 → 启动Step 3.3
     ├─→ Subagent[Step 3.3]: 精读论文3
+    │       └─→ 完成后 → 启动Step 3.4
     ├─→ Subagent[Step 3.4]: 精读论文4
+    │       └─→ 完成后 → 启动Step 3.5
     ├─→ Subagent[Step 3.5]: 精读论文5
-    │       └─→ 返回5篇文档 → 主Session记录
+    │       └─→ 完成后 → 启动Step 4
     │
     ├─→ Subagent[Step 4]: 更新论文列表
     │       └─→ 返回状态 → 主Session记录
